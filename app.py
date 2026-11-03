@@ -16,7 +16,7 @@ DATABASE = "database.db"
 
 def init_db():
 
-    connection = sqlite3.connect(DATABASE)
+    connection = sqlite3.connect("/tmp/mars_weather.db")
 
     connection.execute("""
         CREATE TABLE IF NOT EXISTS weather (
@@ -37,7 +37,7 @@ def init_db():
 
 def save_weather(data):
 
-    connection = sqlite3.connect(DATABASE)
+    connection = sqlite3.connect("/tmp/mars_weather.db")
 
     connection.execute("""
         INSERT OR IGNORE INTO weather
@@ -59,7 +59,7 @@ def save_weather(data):
 
 def get_history():
 
-    connection = sqlite3.connect(DATABASE)
+    connection = sqlite3.connect("/tmp/mars_weather.db")
 
     connection.row_factory = sqlite3.Row
 
@@ -113,7 +113,7 @@ if __name__ == "__main__":
     app.run(
         host="0.0.0.0",
         port=5000,
-        debug=False
+        debug=True
     )
 
 
