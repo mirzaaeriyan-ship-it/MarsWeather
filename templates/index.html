@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Mars Weather Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header class="header">
+    <h2>🔴 MARS WEATHER</h2>
+
+    <nav>
+        <a href="#overview">Overview</a>
+        <a href="#weather">Weather</a>
+        <a href="#analytics">Analytics</a>
+    </nav>
+</header>
+
+<section class="hero" id="overview">
+
+    <div class="hero-content">
+        <p class="tag">PLANETARY WEATHER MONITORING</p>
+
+        <h1>Explore the Weather of Mars</h1>
+
+        <p>
+            Monitor the latest available environmental
+            observations from Mars exploration missions.
+        </p>
+
+        <button onclick="loadWeather()">
+            Refresh Weather Data
+        </button>
+    </div>
+
+</section>
+
+<main>
+
+    <section class="section-heading" id="weather">
+    <h2>Mars Weather Overview</h2>
+
+    <p id="observation-date">
+        Waiting for NASA observations...
+    </p>
+    </section>
+
+    <!-- Mars Rover Selection -->
+
+    <section class="rover-selection">
+
+        <h3>Select Mars Rover</h3>
+
+        <select id="rover">
+
+            <option value="curiosity">
+                Curiosity Rover
+            </option>
+
+            <option value="perseverance">
+                Perseverance Rover
+            </option>
+
+        </select>
+
+    </section>
+
+    <section class="weather-grid">
+
+        <div class="weather-card">
+            <h3>Air Temperature</h3>
+            <p id="temperature">--</p>
+        </div>
+
+        <div class="weather-card">
+            <h3>Ground Temperature</h3>
+            <p id="ground-temperature">--</p>
+        </div>
+
+        <div class="weather-card">
+            <h3>Wind Speed</h3>
+            <p id="wind-speed">--</p>
+        </div>
+
+        <div class="weather-card">
+            <h3>Pressure</h3>
+            <p id="pressure">--</p>
+        </div>
+
+    </section>
+
+    <section class="analytics" id="analytics">
+        <h2>Weather Analytics</h2>
+
+        <div class="chart-container">
+            <canvas id="temperatureChart"></canvas>
+        </div>
+    </section>
+
+    <section class="weather-card">
+
+    <h3>Dust Storm Monitoring</h3>
+
+    <p id="dust-status">
+        Data unavailable
+    </p>
+
+    </section>
+
+    <p id="status">Connecting to NASA data...</p>
+
+</main>
+
+<footer>
+    <p>Mars Weather Monitoring System</p>
+    <p>Data source: NASA | Observations may be delayed</p>
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}">
+</script>
+
+</body>
+</html>
+
